@@ -1,8 +1,8 @@
-package com.example.webfluxdemo.controller;
+package com.example.webfluxdemo.web.controller;
 
-import com.example.webfluxdemo.apipayload.CreateBookRequest;
 import com.example.webfluxdemo.domain.Book;
 import com.example.webfluxdemo.service.BookService;
+import com.example.webfluxdemo.web.apipayload.CreateBookRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +33,7 @@ public class BookController {
     }
 
     @PostMapping("/api/v1/book")
-    public void create(@Valid @RequestBody CreateBookRequest request) {
-        bookService.create(request.name, request.author);
+    public Mono<Book> create(@Valid @RequestBody CreateBookRequest request) {
+        return bookService.create(request.name, request.author);
     }
 }

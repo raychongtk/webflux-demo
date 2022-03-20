@@ -1,4 +1,4 @@
-package com.example.webfluxdemo.apipayload;
+package com.example.webfluxdemo.web.apipayload;
 
 import javax.validation.constraints.NotBlank;
 

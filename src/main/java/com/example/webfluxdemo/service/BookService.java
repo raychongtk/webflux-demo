@@ -17,13 +17,13 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
-    public void create(String name, String author) {
+    public Mono<Book> create(String name, String author) {
         var book = new Book();
         book.id = UUID.randomUUID().toString();
         book.name = name;
         book.author = author;
         book.newBook = true;
-        bookRepository.save(book).subscribe();
+        return bookRepository.save(book);
     }
 
     public Mono<Book> get(String id) {
